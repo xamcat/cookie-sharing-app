@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<script>
+    function readCookie() {
+        document.getElementById("cookieValue").innerHTML = document.cookie;
+        console.log("the cookie has been read and displayed on UI: ", document.cookie);
+    }
+
+    function setCookie() {
+        document.cookie = "CookieSharingApp=" + Date().toString() + "; max-age=60; path=/;";
+        readCookie();
+        console.log("the cookie has been set: ", document.cookie);
+    }
+
+    function clearCookie() {
+        document.cookie = "CookieSharingApp=;" + "max-age=-1; path=/;";
+        readCookie();
+        console.log("the cookie has been cleared: ", document.cookie);
+    }
+</script>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div>This is a cookie sharing sample website</div>
+    <button onclick="setCookie()">set cookie</button>
+    <button onclick="clearCookie()">clear cookies</button>
+    <button onclick="window.location.reload()">reload page</button>
+    
+    <div>
+        <span >Current cookie value: </span>
+        <strong><span id="cookieValue"></span></strong>
+    </div>
+</div>
